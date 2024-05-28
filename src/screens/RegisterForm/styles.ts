@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   btnSubmit: {
+    top: 80,
     alignItems: 'center',
     alignContent: 'center',
     paddingVertical: 12,
