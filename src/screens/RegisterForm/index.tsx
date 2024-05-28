@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { styles } from './styles';
+import React from "react";
+import { View, TextInput, Button, Text, TouchableOpacity } from "react-native";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { styles } from "./styles";
 
 interface RegisterFormValues {
   firstName: string;
@@ -16,39 +16,37 @@ interface RegisterFormValues {
 
 const RegisterSchema = Yup.object().shape({
   firstName: Yup.string()
-    .min(2, 'Muito curto!')
-    .max(50, 'Muito longo!')
-    .required('Obrigatório'),
+    .min(2, "Muito curto!")
+    .max(50, "Muito longo!")
+    .required("Obrigatório"),
   lastName: Yup.string()
-    .min(2, 'Muito curto!')
-    .max(50, 'Muito longo!')
-    .required('Obrigatório'),
+    .min(2, "Muito curto!")
+    .max(50, "Muito longo!")
+    .required("Obrigatório"),
   cpf: Yup.string()
-    .matches(/^\d{11}$/, 'Deve ser um CPF válido')
-    .required('Obrigatório'),
-  email: Yup.string().email('Email inválido').required('Obrigatório'),
+    .matches(/^\d{11}$/, "Deve ser um CPF válido")
+    .required("Obrigatório"),
+  email: Yup.string().email("Email inválido").required("Obrigatório"),
   confirmEmail: Yup.string()
-    .oneOf([Yup.ref('email')], 'Emails não correspondem')
-    .required('Obrigatório'),
-  password: Yup.string()
-    .min(6, 'Senha muito curta!')
-    .required('Obrigatório'),
+    .oneOf([Yup.ref("email")], "Emails não correspondem")
+    .required("Obrigatório"),
+  password: Yup.string().min(6, "Senha muito curta!").required("Obrigatório"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Senhas não correspondem')
-    .required('Obrigatório'),
+    .oneOf([Yup.ref("password")], "Senhas não correspondem")
+    .required("Obrigatório"),
 });
 
 export const RegisterForm: React.FC = () => {
   return (
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        cpf: '',
-        email: '',
-        confirmEmail: '',
-        password: '',
-        confirmPassword: '',
+        firstName: "",
+        lastName: "",
+        cpf: "",
+        email: "",
+        confirmEmail: "",
+        password: "",
+        confirmPassword: "",
       }}
       validationSchema={RegisterSchema}
       onSubmit={(values) => {
@@ -56,13 +54,21 @@ export const RegisterForm: React.FC = () => {
         console.log(values);
       }}
     >
-      {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+      {({
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        errors,
+        touched,
+      }) => (
         <View style={styles.container}>
           <TextInput
             style={styles.input}
             placeholder="First Name"
-            onChangeText={handleChange('firstName')}
-            onBlur={handleBlur('firstName')}
+            placeholderTextColor="#888"
+            onChangeText={handleChange("firstName")}
+            onBlur={handleBlur("firstName")}
             value={values.firstName}
           />
           {errors.firstName && touched.firstName && (
@@ -72,8 +78,9 @@ export const RegisterForm: React.FC = () => {
           <TextInput
             style={styles.input}
             placeholder="Last Name"
-            onChangeText={handleChange('lastName')}
-            onBlur={handleBlur('lastName')}
+            placeholderTextColor="#888"
+            onChangeText={handleChange("lastName")}
+            onBlur={handleBlur("lastName")}
             value={values.lastName}
           />
           {errors.lastName && touched.lastName && (
@@ -83,9 +90,10 @@ export const RegisterForm: React.FC = () => {
           <TextInput
             style={styles.input}
             placeholder="CPF"
+            placeholderTextColor="#888"
             keyboardType="numeric"
-            onChangeText={handleChange('cpf')}
-            onBlur={handleBlur('cpf')}
+            onChangeText={handleChange("cpf")}
+            onBlur={handleBlur("cpf")}
             value={values.cpf}
           />
           {errors.cpf && touched.cpf && (
@@ -95,8 +103,9 @@ export const RegisterForm: React.FC = () => {
           <TextInput
             style={styles.input}
             placeholder="Email"
-            onChangeText={handleChange('email')}
-            onBlur={handleBlur('email')}
+            placeholderTextColor="#888"
+            onChangeText={handleChange("email")}
+            onBlur={handleBlur("email")}
             value={values.email}
             keyboardType="email-address"
           />
@@ -107,8 +116,9 @@ export const RegisterForm: React.FC = () => {
           <TextInput
             style={styles.input}
             placeholder="Confirm Email"
-            onChangeText={handleChange('confirmEmail')}
-            onBlur={handleBlur('confirmEmail')}
+            placeholderTextColor="#888"
+            onChangeText={handleChange("confirmEmail")}
+            onBlur={handleBlur("confirmEmail")}
             value={values.confirmEmail}
             keyboardType="email-address"
           />
@@ -119,9 +129,10 @@ export const RegisterForm: React.FC = () => {
           <TextInput
             style={styles.input}
             placeholder="Password"
+            placeholderTextColor="#888"
             secureTextEntry
-            onChangeText={handleChange('password')}
-            onBlur={handleBlur('password')}
+            onChangeText={handleChange("password")}
+            onBlur={handleBlur("password")}
             value={values.password}
           />
           {errors.password && touched.password && (
@@ -131,16 +142,18 @@ export const RegisterForm: React.FC = () => {
           <TextInput
             style={styles.input}
             placeholder="Confirm Password"
+            placeholderTextColor="#888"
             secureTextEntry
-            onChangeText={handleChange('confirmPassword')}
-            onBlur={handleBlur('confirmPassword')}
+            onChangeText={handleChange("confirmPassword")}
+            onBlur={handleBlur("confirmPassword")}
             value={values.confirmPassword}
           />
           {errors.confirmPassword && touched.confirmPassword && (
             <Text style={styles.errorText}>{errors.confirmPassword}</Text>
           )}
-
-          <Button onPress={handleSubmit as any} title="Submit" />
+          <TouchableOpacity onPress={handleSubmit as any} style={styles.btnSubmit}>
+            <Text style={styles.text}>Register</Text>
+          </TouchableOpacity>
         </View>
       )}
     </Formik>
