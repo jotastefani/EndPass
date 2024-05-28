@@ -1,5 +1,6 @@
 import { Pressable, Text, View, ViewStyle } from 'react-native';
 import { styles } from './styles';
+import React from 'react';
 
 type Props = {
   onClick: () => void;

@@ -4,6 +4,7 @@ import { Login } from "../screens/Login";
 import { RegisterForm } from "../screens/RegisterForm";
 import { Explorer } from "../screens/Explorer";
 
+
 export const Stack = createStackNavigator();
 export function Routes() {
   return (

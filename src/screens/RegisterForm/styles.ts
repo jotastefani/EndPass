@@ -3,28 +3,27 @@ import { THEME } from "../../theme"
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',      
-    backgroundColor: THEME.COLORS.BACKGROUND_900
-  },
-  btnNext: {
-    alignItems: 'center',
-    alignContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    width: 167,
-    height: 52,
-    borderRadius: 4,
-    elevation: 3,
+    padding: 40,
+    flex: 1,             
     backgroundColor: THEME.COLORS.BACKGROUND_900,
-    hover: THEME.COLORS.BACKGROUND_800,
-  },  
+    paddingTop: 250,
+    
+  },
   input: {
-    height: 20, 
-    placeholder:"User",
-    maxWidth: 300,
-    alignItems: 'center',
-    alignContent: 'center',
-    flexDirection: 'row'   
-  }
-})
+    height: 40,    
+    borderWidth: 2,
+    marginBottom: 20,
+    paddingLeft: 10,
+    color: 'white',    
+    borderColor: '#888',
+    borderRadius: 8,
+    paddingHorizontal: 10,  
+    
+    
+  },
+  errorText: {
+    fontSize: 12,
+    color: 'red',
+    marginBottom: 10,
+  },
+});

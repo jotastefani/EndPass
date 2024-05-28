@@ -6,6 +6,12 @@ export const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+    alignItems: 'flex-start', 
+    height: 203,
+    backgroundColor: THEME.COLORS.BACKGROUND_900
+  },
+  container1: {
+    flex: 1,
     alignItems: 'center', 
     justifyContent: 'flex-end', 
     height: 203,
@@ -25,7 +31,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
-    marginVertical: 10
+    
   },  
 
   btnLogin: {

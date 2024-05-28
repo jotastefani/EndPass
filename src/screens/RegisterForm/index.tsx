@@ -1,92 +1,148 @@
 import React from 'react';
-import { withFormik, FormikProps, FormikErrors, Form, Field } from 'formik';
+import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { styles } from './styles';
 
-// Função para validar o email
-function isValidEmail(email: string) {
-  // Implemente sua lógica de validação de email aqui
-  // Retornando verdadeiro se o email for válido e falso caso contrário
-}
-
-// Shape dos valores do formulário
-interface FormValues {
+interface RegisterFormValues {
   firstName: string;
   lastName: string;
-  cpf: string;
+  cpf: string; // Usando string para evitar problemas com números longos
   email: string;
   confirmEmail: string;
   password: string;
   confirmPassword: string;
 }
 
-// Componente interno do formulário
-const InnerForm = (props: FormikProps<FormValues>) => {
-  const { touched, errors, isSubmitting } = props;
+const RegisterSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, 'Muito curto!')
+    .max(50, 'Muito longo!')
+    .required('Obrigatório'),
+  lastName: Yup.string()
+    .min(2, 'Muito curto!')
+    .max(50, 'Muito longo!')
+    .required('Obrigatório'),
+  cpf: Yup.string()
+    .matches(/^\d{11}$/, 'Deve ser um CPF válido')
+    .required('Obrigatório'),
+  email: Yup.string().email('Email inválido').required('Obrigatório'),
+  confirmEmail: Yup.string()
+    .oneOf([Yup.ref('email')], 'Emails não correspondem')
+    .required('Obrigatório'),
+  password: Yup.string()
+    .min(6, 'Senha muito curta!')
+    .required('Obrigatório'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Senhas não correspondem')
+    .required('Obrigatório'),
+});
+
+export const RegisterForm: React.FC = () => {
   return (
-    <Form>
-      <Field type="text" name="firstName" placeholder="Nome" />
-      {touched.firstName && errors.firstName && <div>{errors.firstName}</div>}
+    <Formik
+      initialValues={{
+        firstName: '',
+        lastName: '',
+        cpf: '',
+        email: '',
+        confirmEmail: '',
+        password: '',
+        confirmPassword: '',
+      }}
+      validationSchema={RegisterSchema}
+      onSubmit={(values) => {
+        // Envie os dados para a API ou faça o processamento necessário
+        console.log(values);
+      }}
+    >
+      {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+        <View style={styles.container}>
+          <TextInput
+            style={styles.input}
+            placeholder="First Name"
+            onChangeText={handleChange('firstName')}
+            onBlur={handleBlur('firstName')}
+            value={values.firstName}
+          />
+          {errors.firstName && touched.firstName && (
+            <Text style={styles.errorText}>{errors.firstName}</Text>
+          )}
 
-      <Field type="text" name="lastName" placeholder="Sobrenome" />
-      {touched.lastName && errors.lastName && <div>{errors.lastName}</div>}
+          <TextInput
+            style={styles.input}
+            placeholder="Last Name"
+            onChangeText={handleChange('lastName')}
+            onBlur={handleBlur('lastName')}
+            value={values.lastName}
+          />
+          {errors.lastName && touched.lastName && (
+            <Text style={styles.errorText}>{errors.lastName}</Text>
+          )}
 
-      <Field type="text" name="cpf" placeholder="CPF" />
-      {touched.cpf && errors.cpf && <div>{errors.cpf}</div>}
+          <TextInput
+            style={styles.input}
+            placeholder="CPF"
+            keyboardType="numeric"
+            onChangeText={handleChange('cpf')}
+            onBlur={handleBlur('cpf')}
+            value={values.cpf}
+          />
+          {errors.cpf && touched.cpf && (
+            <Text style={styles.errorText}>{errors.cpf}</Text>
+          )}
 
-      <Field type="email" name="email" placeholder="E-mail" />
-      {touched.email && errors.email && <div>{errors.email}</div>}
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            onChangeText={handleChange('email')}
+            onBlur={handleBlur('email')}
+            value={values.email}
+            keyboardType="email-address"
+          />
+          {errors.email && touched.email && (
+            <Text style={styles.errorText}>{errors.email}</Text>
+          )}
 
-      <Field type="email" name="confirmEmail" placeholder="Confirmar E-mail" />
-      {touched.confirmEmail && errors.confirmEmail && <div>{errors.confirmEmail}</div>}
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Email"
+            onChangeText={handleChange('confirmEmail')}
+            onBlur={handleBlur('confirmEmail')}
+            value={values.confirmEmail}
+            keyboardType="email-address"
+          />
+          {errors.confirmEmail && touched.confirmEmail && (
+            <Text style={styles.errorText}>{errors.confirmEmail}</Text>
+          )}
 
-      <Field type="password" name="password" placeholder="Senha" />
-      {touched.password && errors.password && <div>{errors.password}</div>}
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            onChangeText={handleChange('password')}
+            onBlur={handleBlur('password')}
+            value={values.password}
+          />
+          {errors.password && touched.password && (
+            <Text style={styles.errorText}>{errors.password}</Text>
+          )}
 
-      <Field type="password" name="confirmPassword" placeholder="Confirmar Senha" />
-      {touched.confirmPassword && errors.confirmPassword && <div>{errors.confirmPassword}</div>}
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Password"
+            secureTextEntry
+            onChangeText={handleChange('confirmPassword')}
+            onBlur={handleBlur('confirmPassword')}
+            value={values.confirmPassword}
+          />
+          {errors.confirmPassword && touched.confirmPassword && (
+            <Text style={styles.errorText}>{errors.confirmPassword}</Text>
+          )}
 
-      <button type="submit" disabled={isSubmitting}>
-        Ok
-      </button>
-    </Form>
+          <Button onPress={handleSubmit as any} title="Submit" />
+        </View>
+      )}
+    </Formik>
   );
 };
-
-// Props do componente de formulário
-interface MyFormProps {
-  message: string;
-}
-
-// Componente de formulário envolvido com withFormik HoC
-export const RegisterForm = withFormik<MyFormProps, FormValues>({
-  // Mapeando props externas para os valores do formulário
-  mapPropsToValues: () => ({
-    firstName: '',
-    lastName: '',
-    cpf: '',
-    email: '',
-    confirmEmail: '',
-    password: '',
-    confirmPassword: '',
-  }),
-
-  // Validando os valores do formulário
-  validate: (values: FormValues) => {
-    const errors: FormikErrors<FormValues> = {};
-
-    // Adicione suas regras de validação aqui
-
-    return errors;
-  },
-
-  // Lidando com a submissão do formulário
-  handleSubmit: (values: FormValues, { setSubmitting }) => {
-    // Realize as ações de submissão aqui
-    // Por exemplo, fazer uma chamada à API
-    console.log(values);
-
-    // Sinalizando que a submissão foi concluída
-    setSubmitting(false);
-  },
-})(InnerForm);
-
-
