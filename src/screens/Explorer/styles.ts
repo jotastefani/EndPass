@@ -7,7 +7,9 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center', 
-    justifyContent: 'space-between',     
+    justifyContent: 'flex-end', 
+    height: 203,
+    
     backgroundColor: THEME.COLORS.BACKGROUND_900
   },
 
@@ -23,6 +25,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+    marginVertical: 10
   },  
 
   btnLogin: {
@@ -53,8 +56,13 @@ export const styles = StyleSheet.create({
     display: 'flex',    
     justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 40,
-    paddingBottom: 60,
+    gap: 10,
+  },
+  input: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  
   }
 });
   

@@ -22,7 +22,7 @@ export function Home() {
             />
             <Button
                title="Register"
-               onClick={() => navigation.navigate('Register')}
+               onClick={() => navigation.navigate('RegisterForm')}
                btnStyle={styles.btnRegister}
             />
          </View>
