@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, View, Image } from "react-native";
+import { TextInput, View, Image, Text } from "react-native";
 import { styles } from "./styles";
 import logoSvg from "../../../assets/logoendpass.png";
 import Button from "../../components/Button";
@@ -11,6 +11,7 @@ export function Login() {
     <View style={styles.container}>
       {/* Logo */}
       <Image source={logoSvg} style={styles.logo} />
+      <Text> Faça seu login com o Google</Text>
       <View style={styles.row}>
         {/* Campo de entrada de e-mail */}
         <TextInput
