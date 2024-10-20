@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { THEME } from '../../theme';
+import { THEME } from '../../../theme';
 
 const styles = StyleSheet.create({
-    botao: {
+    Auth: {
       backgroundColor: '#4285F4',
       padding: 16,
       borderRadius: 10,
@@ -12,10 +12,13 @@ const styles = StyleSheet.create({
       height: 50,
       marginVertical: 20,
     },
-    textoBotao: {
+    text: {
       color: '#FFFFFF',
       fontSize: 16,
       fontWeight: 'bold',
     },
   });
-  
+
+export function signIn() {
+    throw new Error("Function not implemented.");
+}
