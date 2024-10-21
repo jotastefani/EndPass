@@ -28,13 +28,13 @@ const Footer = () => {
           style={styles.icon}
         />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Messeger')}>
         <Image
           source={require("../../../assets/IconChat.png")}
           style={styles.icon}
         />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
         <Image
           source={require("../../../assets/IconProfile.png")}
           style={styles.icon}

@@ -9,6 +9,8 @@ import EventsDetail from "../screens/EventsDetails";
 import Filters from "../screens/Filters";
 import Maps from "../screens/Maps";
 import NewEvent from "../screens/NewEvent";
+import Messeger from "../screens/Chat";
+import Perfil from "../screens/Perfil";
 
 
 
@@ -25,6 +27,8 @@ export function Routes() {
       <Stack.Screen name="Filters" component={Filters} />
       <Stack.Screen name="Maps" component={Maps} />
       <Stack.Screen name="NewEvent" component={NewEvent} />
+      <Stack.Screen name="Messeger" component={Messeger} />
+      <Stack.Screen name="Perfil" component={Perfil} />
       
     </Stack.Navigator>
   );
