@@ -1,39 +1,43 @@
 import React from "react";
-import { TextInput, View, Image } from "react-native";
+import { TextInput, View, Image, Text } from "react-native";
 import { styles } from "./styles";
 import logoSvg from "../../../assets/logoendpass.png";
 import Button from "../../components/Button";
 import { useNavigation } from "@react-navigation/native";
+import { GoogleSigninButton } from "react-native-google-signin";
+import SignIn from "../../Signin";
+
 
 export function Login() {
   const navigation = useNavigation();
   return (
+    <>
     <View style={styles.container}>
+      
       {/* Logo */}
       <Image source={logoSvg} style={styles.logo} />
+      <SignIn />
       <View style={styles.row}>
+
         {/* Campo de entrada de e-mail */}
         <TextInput
           style={styles.input}
           placeholder="E-mail"
           placeholderTextColor="#888"
-          keyboardType="email-address"
-        />
+          keyboardType="email-address" />
 
         {/* Campo de entrada de senha */}
         <TextInput
           style={[styles.input, styles.inputMargin]}
           placeholder="Senha"
           placeholderTextColor="#888"
-          secureTextEntry
-        />
+          secureTextEntry />
 
         <Button
           title="Explorer"
           onClick={() => navigation.navigate('Explorer')}
-          btnStyle={styles.btnLogin}
-        />
+          btnStyle={styles.btnLogin} />
       </View>
-    </View>
+    </View></>
   );
 }

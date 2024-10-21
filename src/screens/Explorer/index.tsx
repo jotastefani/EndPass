@@ -3,6 +3,9 @@ import { Text, TextInput, View } from "react-native";
 import { styles } from "./styles";
 import TabBar from "../../components/TabBar";
 
+const explorer: React.FC = () => <View />;
+
+
 export function Explorer() {
   return (
     <View style={styles.container}>
