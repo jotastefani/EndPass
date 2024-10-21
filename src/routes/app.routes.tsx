@@ -5,6 +5,10 @@ import { Login } from "../screens/Login";
 import { RegisterForm } from "../screens/RegisterForm";
 import { Explorer } from "../screens/Explorer";
 import AuthRoutes from "./auth.routes";
+import EventsDetail from "../screens/EventsDetails";
+import Filters from "../screens/Filters";
+import Maps from "../screens/Maps";
+
 
 
 export const Stack = createStackNavigator();
@@ -16,6 +20,10 @@ export function Routes() {
       <Stack.Screen name="RegisterForm" component={RegisterForm} />
       <Stack.Screen name="Explorer" component={Explorer} />
       <Stack.Screen name="Auth" component={AuthRoutes} />
+      <Stack.Screen name="EventDetails" component={EventsDetail} />
+      <Stack.Screen name="Filters" component={Filters} />
+      <Stack.Screen name="Maps" component={Maps} />
+      
     </Stack.Navigator>
   );
 }

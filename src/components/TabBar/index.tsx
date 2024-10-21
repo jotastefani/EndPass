@@ -5,6 +5,7 @@ import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 
+
 const Footer = () => {
   const navigation = useNavigation();
   return (
@@ -16,13 +17,13 @@ const Footer = () => {
           />
                   
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Filters')}>
         <Image
           source={require("../../../assets/IconSearch.png")}
           style={styles.icon}
         />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('NewEvent')}>
         <Image
           source={require("../../../assets/IconPlus.png")}
           style={styles.icon}
