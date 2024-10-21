@@ -5,7 +5,6 @@ import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 
-
 const Footer = () => {
   const navigation = useNavigation();
   return (

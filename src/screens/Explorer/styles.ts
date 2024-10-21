@@ -2,23 +2,32 @@ import { StyleSheet } from 'react-native';
 import { THEME } from '../../theme';
 
 
-export const styles = StyleSheet.create({
-
-  container: {
-    flex: 1,
-    alignItems: 'flex-start', 
-    height: 203,
-    backgroundColor: THEME.COLORS.BACKGROUND_900
-  },
+export const styles = StyleSheet.create({ 
+  
   container1: {
     flex: 1,
     alignItems: 'center', 
     justifyContent: 'flex-end', 
     height: 203,
     
+    
     backgroundColor: THEME.COLORS.BACKGROUND_900
   },
-
+  container: {
+    flex: 1,
+    backgroundColor: THEME.COLORS.BACKGROUND_900,
+  },
+  map: {
+    justifyContent: 'center',
+    width: '100%',
+    height: '80%',
+  },
+  tabBar: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
+  },
   logo: {
     width: 203,
     height: 208,

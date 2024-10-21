@@ -1,51 +1,79 @@
-import { StyleSheet } from "react-native"
 import { THEME } from "../../theme"
-import { text } from "body-parser";
+import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
-    padding: 40,
     flex: 1,
     backgroundColor: THEME.COLORS.BACKGROUND_900,
-    paddingTop: 100,
-    alignItems: 'center'
-
+    padding: 20,
+  },
+  titulo: {
+    fontSize: THEME.FONT_SIZE.LG,
+    color: THEME.COLORS.TEXT,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  form: {
+    width: '100%',
+    backgroundColor: THEME.COLORS.BACKGROUND_800,
+    padding: 20,
+    borderRadius: 10,
+  },
+  label: {    
+    color: THEME.COLORS.CAPTION_500,
+    marginBottom: 10,
   },
   input: {
     height: 40,
-    borderWidth: 2,
-    marginBottom: 20,
-    paddingLeft: 10,
-    color: 'white',
-    borderColor: '#888',
-    borderRadius: 8,
+    borderColor: THEME.COLORS.SHAPE,
+    borderWidth: 1,
     paddingHorizontal: 10,
-    width: 203,
-
+    paddingVertical: 5,
+    color: THEME.COLORS.TEXT,
+    backgroundColor: THEME.COLORS.SHAPE,
+    marginBottom: 20,
   },
-  errorText: {
-    fontSize: 12,
-    color: 'red',
-    marginBottom: 10,
+  dataHora: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  btnSubmit: {
-    top: 80,
-    alignItems: 'center',
-    alignContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    width: 203,
-    height: 52,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: '#F0F8FA',
-    fontSize: 16
+  inputData: {
+    width: '45%',
+    height: 40,
+    borderColor: THEME.COLORS.SHAPE,
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    color: THEME.COLORS.TEXT,
+    backgroundColor: THEME.COLORS.SHAPE,
   },
-  text: {
-    fontSize: 16,
-    lineHeight: 21,
+  inputHora: {
+    width: '45%',
+    height: 40,
+    borderColor: THEME.COLORS.SHAPE,
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    color: THEME.COLORS.TEXT,
+    backgroundColor: THEME.COLORS.SHAPE,
+  },
+  botao: {
+    backgroundColor: THEME.COLORS.PRIMARY,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  botaoTexto: {
+    color: THEME.COLORS.TEXT,
     fontWeight: 'bold',
-    letterSpacing: 0.25,
+  },
+  tabBar: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
   }
-
 });
+
+export default styles;
