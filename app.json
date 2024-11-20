@@ -29,6 +29,12 @@
     },
     "web": {
       "favicon": "./assets/logoendpass.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a1cb1bbd-a6a6-4b2b-ac2a-8c7ae32d88aa"
+      }
+    },
+    "owner": "j0t4"
   }
 }

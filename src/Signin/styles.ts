@@ -4,9 +4,12 @@ export const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
     alignContent: 'center',
-    end: 'auto',
+    justifyContent: 'space-evenly',
+    
+
              
     backgroundColor: THEME.COLORS.BACKGROUND_900
   },
@@ -19,6 +22,7 @@ export const styles = StyleSheet.create({
   },  
   icon : {
     display: 'flex',
+    
   }
 });
   
